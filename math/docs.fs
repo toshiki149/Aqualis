@@ -142,7 +142,12 @@ namespace Aqualis
                 let ta = a.code
                 let ti = i.code
                 let tb = b.code
-                let tc = c.code
+                let tc = 
+                    match c.Expr with
+                    |Add _ |Sub _ ->
+                        "\\left[" + c.code + "\\right]"
+                    |_ -> 
+                        c.code
                 num0(Var(c.etype,"\\sum_{"+ta+"="+ti+"}^{"+tb+"} "+tc,NaN))
             |_ ->
                 num0 NaN
@@ -157,7 +162,12 @@ namespace Aqualis
             |LaTeX|HTML|HTMLSequenceDiagram ->
                 let ta = a.code
                 let tb = b.code
-                let tc = c.code
+                let tc = 
+                    match c.Expr with
+                    |Add _ |Sub _ ->
+                        "\\left[" + c.code + "\\right]"
+                    |_ -> 
+                        c.code
                 num0(Var(c.etype,"\\sum_{"+ta+"}^{"+tb+"} "+tc,NaN))
             |_ ->
                 num0 NaN
@@ -168,7 +178,12 @@ namespace Aqualis
             |LaTeX|HTML|HTMLSequenceDiagram ->
                 let ta = a.code
                 let tb = b.code
-                let te = eq.code
+                let te = 
+                    match eq.Expr with
+                    |Add _ |Sub _ ->
+                        "\\left[" + eq.code + "\\right]"
+                    |_ -> 
+                        eq.code
                 let tx = x.code
                 num0(Var(x.etype,"\\int_{"+ta+"}^{"+tb+"} "+te+"\\mathrm{d}"+tx,NaN))
             |_ ->

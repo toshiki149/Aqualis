@@ -713,6 +713,7 @@ namespace Aqualis
                         writein(programList[1].allCodes)
                         writein "\\end{document}"
                         programList[prIndex].close()
+                        programList[1].delete()
                 |_ -> ()
                 match figlabel with
                 |WriteLabel wr -> wr.Close()
