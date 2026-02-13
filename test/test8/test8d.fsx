@@ -12,11 +12,12 @@ let outputdir = __SOURCE_DIRECTORY__
 open Aqualis
 
 Compile [HTMLSequenceDiagram] outputdir 
-    "test8a" (version,"aaa") <| fun () ->
-
-    //変数の定義と代入
+    "test8d" (version,"aaa") <| fun () ->
+    
+    //結果(正しい代入)
     ch.I "x" <| fun x ->
-    ch.I "y" <| fun y ->
+    ch.I "x_1" <| fun x1 ->
         x <== 0
-        y <== x + 1
-
+        x1 <== 0
+        iter.range (1,10) <| fun i ->
+            x <== x + i
